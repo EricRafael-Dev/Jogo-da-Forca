@@ -5,7 +5,7 @@ export default function Jogo(props) {
     return (
         <div class="top">
             <Forca />
-            <Word palavra={props.palavra}/>
+            <Word palavras={props.palavras}/>
         </div>
     )
 }
