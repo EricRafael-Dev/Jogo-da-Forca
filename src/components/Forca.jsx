@@ -1,5 +1,6 @@
-export default function Forca() {
+export default function Forca({contador={contador}}) {
+    const link = `./assets/forca${contador}.png`
     return (
-        <img src="./assets/forca0.png" alt="forca0" />
+        <img src={link} alt={contador} />
     )
 }

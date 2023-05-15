@@ -1,22 +1,25 @@
 import { useState } from "react"
 
 export default function Word(props) {
-    let [word, setWord] = useState('')
 
     function chooseWord() {
         let palavra = Math.floor(Math.random() * props.palavras.length);
         let newWord = props.palavras[palavra].split('')
-        let newWordUnderline = '_ '.repeat(newWord.length)
+        
 
-        console.log(newWord)
-
-        setWord(newWordUnderline)
+        props.setWordGame(newWord)
+        props.setNewWordUnderline('_ '.repeat(newWord.length))
+        
+        
+        props.setSelected([])
+        props.setContador(0)
+        props.setnewGame(false)
+        props.setFinished()
     }
-
     return (
         <div class="word">
             <button onClick={chooseWord}>Escolher Palavra</button>
-            <p>{word}</p>
+            <p className={props.finished}>{props.newWordUnderline}</p>
         </div>
     )
 }
