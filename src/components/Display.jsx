@@ -10,7 +10,7 @@ export default function Display() {
     const [contador, setContador] = useState(0)
     const [wordGame, setWordGame] = useState()
     const [selected, setSelected] = useState([])
-    let [newWordUnderline, setNewWordUnderline] = useState()
+    let [newWordUnderline, setNewWordUnderline] = useState('')
 
     return (
         <div>
@@ -20,4 +20,5 @@ export default function Display() {
             <span>{contador}</span>
         </div>
     )
+    
 }

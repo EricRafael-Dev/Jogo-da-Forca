@@ -1,5 +1,6 @@
 
 export default function Letras(props) {
+    let palavradojogo;
     const setFinished = props.setFinished
     const newGame = props.newGame;
     const setnewGame = props.setnewGame;
@@ -8,13 +9,17 @@ export default function Letras(props) {
     const newWordUnderline = props.newWordUnderline;
     const setNewWordUnderline = props.setNewWordUnderline;
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-    const buttons = alfabeto.map((letter, indice) => <button className={`tecla ${newGame ? 'disabled' : (selected.includes(indice) ? 'disabled' : '')} `} disabled={newGame ? true : (selected.includes(indice) ? true : false)} onClick={() => verifyLetter(letter, indice)}> {letter.toUpperCase()}</button>)
+    const buttons = alfabeto.map((letter, indice) => <button className={`tecla ${newGame ? 'disabled' : (selected.includes(indice) ? 'disabled' : '')} `} disabled={newGame ? true : (selected.includes(indice) ? true : false)} onClick={() => verifyLetter(letter, indice)} data-test='verifyLetter'> {letter.toUpperCase()}</button>)
 
+    for(let i =0; i<newWordUnderline.length; i++){
+        palavradojogo = palavradojogo + newWordUnderline.replace(' ', '')
+
+    } 
     if (props.contador === 6) {
         setnewGame(true)
         setFinished('lose')
     } else if (newWordUnderline.replace(' ', '') == props.wordGame) {
-        console.log(newWordUnderline.replace(' ', ''))
+        console.log(palavradojogo);
     }
 
     function verifyLetter(letter, indice) {
@@ -33,15 +38,11 @@ export default function Letras(props) {
         if (verify == false) {
             props.setContador(props.contador + 1)
         }
-
-
     }
 
     function replaceStr(str, i, newCaractere) {
         return str.slice(0, i * 2) + newCaractere + str.slice(i * 2 + 1)
     }
-
-
 
     return (
         <div class="game">
